@@ -11,8 +11,9 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Name="btnFire" Content="Fire" Width="100" Height="40"/>
-        <TextBlock Grid.Row="1" Name="tbInfo"/>
+        <Button Name="btnFire" Content="Fire" Width="100" Height="40" Click="btnFire_Click"/>
+        <TextBlock Grid.Row="1" Name="tbInfo" FontSize="16" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
     </Grid>
 </Window>
