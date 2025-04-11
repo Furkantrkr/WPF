@@ -4,12 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
+        xmlns:userControls="clr-namespace:WPF.View.UserControls"        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="300">
+
     <Grid>
-        <TextBlock Name="tbStatus" FontSize="50"/>
-        <Button Name="btnToggleRun" Width="100" Height="50" 
-                    VerticalAlignment="Center" HorizontalAlignment="Center" 
-                Content="Run" FontSize="20" Click="btnToggleRun_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <userControls:ClearableTextBox Grid.Row="1" Width="250" Height="40" />
+        <userControls:ClearableTextBox Grid.Row="2" Width="250" Height="40"/>
+        <userControls:ClearableTextBox Grid.Row="3" Width="250" Height="40"/>
+        <userControls:ClearableTextBox Grid.Row="4" Width="250" Height="40"/>
     </Grid>
 </Window>
