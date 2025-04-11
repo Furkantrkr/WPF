@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="250" Width="300">
     <Grid>
-        <TextBlock Name="tbStatus" FontSize="50"/>
-        <Button Name="btnToggleRun" Width="100" Height="50" 
-                    VerticalAlignment="Center" HorizontalAlignment="Center" 
-                Content="Run" FontSize="20" Click="btnToggleRun_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Name="txtInput" VerticalAlignment="Center" Width="250" Height="40"
+                 FontSize="16" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+        <Button Grid.Row="1" Name="btnSet" Content="Set" Width="100" Height="40"
+                Click="btnSet_Click"/>
+        <TextBlock Grid.Row="2" Name="tbResult" FontSize="16" Text="{Binding BoundText}" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
