@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Winforms = System.Windows.Forms;
 
 namespace WPF
 {
@@ -10,19 +11,17 @@ namespace WPF
             InitializeComponent();
         }
 
-        private void btnToggleRun_Click(object sender, RoutedEventArgs e)
+        private void btnFire_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsRunning)
-            {
-                tbStatus.Text = "Stopped";
-                btnToggleRun.Content = "Run";
-            } else
-            {
-                tbStatus.Text = "Running";
-                btnToggleRun.Content = "Stop";
-            }
+            Winforms.FolderBrowserDialog folderBrowserDialog = new Winforms.FolderBrowserDialog();
+            folderBrowserDialog.SelectedPath = "C:\\Users\\FurkanTurker\\Desktop\\FT\\WPF\\01 - GettingStartedWithWPF\\WPF";
+            Winforms.DialogResult result = folderBrowserDialog.ShowDialog();
 
-            IsRunning = !IsRunning;
+            if(result == Winforms.DialogResult.OK)
+            {
+                string path = folderBrowserDialog.SelectedPath;
+            }
+            
         }
     }
 }
