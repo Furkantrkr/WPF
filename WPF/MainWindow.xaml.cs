@@ -29,6 +29,7 @@ namespace WPF
             if (result == MessageBoxResult.Yes)
                 foreach (object item in itemsList)
                 {
+                    //
                     lvEntries.Items.Remove(item);
                 }
             else
