@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Text;
+using System.Windows;
+using Microsoft.Win32;
 
 namespace WPF
 {
@@ -10,19 +12,25 @@ namespace WPF
             InitializeComponent();
         }
 
-        private void btnToggleRun_Click(object sender, RoutedEventArgs e)
+        private void btn_Fire_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsRunning)
-            {
-                tbStatus.Text = "Stopped";
-                btnToggleRun.Content = "Run";
-            } else
-            {
-                tbStatus.Text = "Running";
-                btnToggleRun.Content = "Stop";
-            }
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "#C Source Files | *.cs";
+            fileDialog.Title = "Please select a CS Sources file";
+            fileDialog.Multiselect = true;
 
-            IsRunning = !IsRunning;
+            bool? success = fileDialog.ShowDialog();
+
+            if(success == true)
+            {
+                string[] paths = fileDialog.FileNames;
+                StringBuilder stringBuilder = new StringBuilder();
+                foreach (string path in paths)
+                {
+                    stringBuilder.AppendLine(path);
+                }
+                tbInfo.Text = stringBuilder.ToString();
+            }
         }
     }
 }
