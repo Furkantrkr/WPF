@@ -8,21 +8,25 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
+            lvEntries.Items.Add("a");
+            lvEntries.Items.Add("b");
+            lvEntries.Items.Add("c");
         }
 
-        private void btnToggleRun_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (!IsRunning)
-            {
-                tbStatus.Text = "Stopped";
-                btnToggleRun.Content = "Run";
-            } else
-            {
-                tbStatus.Text = "Running";
-                btnToggleRun.Content = "Stop";
-            }
+            lvEntries.Items.Add(txtEntry.Text);
+        }
 
-            IsRunning = !IsRunning;
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            object item = lvEntries.SelectedItem;
+            lvEntries.Items.Remove(item);
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            lvEntries.Items.Clear();
         }
     }
 }
