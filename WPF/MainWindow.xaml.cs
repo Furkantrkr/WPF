@@ -1,44 +1,44 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace WPF
 {
     public partial class MainWindow : Window
     {
-        bool IsRunning = false;
+ 
         public MainWindow()
         {
             InitializeComponent();
-            lvEntries.Items.Add("a");
-            lvEntries.Items.Add("b");
-            lvEntries.Items.Add("c");
+            _entries = new ObservableCollection<string>();
+
+            DataContext = this;
         }
+
+        private ObservableCollection<string> _entries;
+
+        public ObservableCollection<string> Entries
+        {
+            get { return _entries; }
+            set { _entries = value; }
+        }
+
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Add(txtEntry.Text);
+            Entries.Add(txtEntry.Text);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            IList items = lvEntries.SelectedItems;
-            MessageBoxResult result = MessageBox.Show($"Are you sure that you want to delete: {items.Count} items?", "Sure?", MessageBoxButton.YesNo);
-
-            IList itemsList = new ArrayList(items);
-
-            if (result == MessageBoxResult.Yes)
-                foreach (object item in itemsList)
-                {
-                    lvEntries.Items.Remove(item);
-                }
-            else
-                return;
+            string selectedItem = (string)lvEntries.SelectedItem;
+            Entries.Remove(selectedItem);
 
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Clear();
+            Entries.Clear();
         }
     }
 }
