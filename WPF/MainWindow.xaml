@@ -5,11 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="500">
     <Grid>
-        <TextBlock Name="tbStatus" FontSize="50"/>
-        <Button Name="btnToggleRun" Width="100" Height="50" 
-                    VerticalAlignment="Center" HorizontalAlignment="Center" 
-                Content="Run" FontSize="20" Click="btnToggleRun_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions> 
+            <DataGrid CanUserAddRows="False" CanUserDeleteRows="False">
+            </DataGrid>
+            <StackPanel Grid.Column="1">
+                <Label Content="Name" />
+                <TextBox Margin="5,0,5,15" />
+                <Label Content="Serial Number" />
+                <TextBox Margin="5,0,5,15" />
+                <Label Content="Quantity" />
+                <TextBox Margin="5,0,5,15" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
