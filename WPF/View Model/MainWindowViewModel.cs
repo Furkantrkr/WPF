@@ -6,24 +6,15 @@ namespace WPF.View_Model
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<Item> Items {  get; set; }  
+        public ObservableCollection<Item> Items {  get; set; }
+        
+        public RelayCommand AddCommand => new RelayCommand(execute => AddItem());
+        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteItem(), canExecute => SelectedItem != null);
         public MainWindowViewModel()
         {
             Items = new ObservableCollection<Item>();
-
-            Items.Add(new Item()
-            {
-                Name = "Product1",
-                SerialNumber = "0001",
-                Quantity = 5
-            });
-            Items.Add(new Item()
-            {
-                Name = "Product2",
-                SerialNumber = "0002",
-                Quantity = 6
-            });
         }
+
         private Item _selectedItem;
         public Item SelectedItem
         {
@@ -32,6 +23,21 @@ namespace WPF.View_Model
                 _selectedItem = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void AddItem()
+        {
+            Items.Add(new Item
+            {
+                Name = "Item",
+                SerialNumber = "xxxx",
+                Quantity = 1,
+            });
+        }
+
+        private void DeleteItem()
+        {
+            Items.Remove(SelectedItem);
         }
     }
 }
